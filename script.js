@@ -216,30 +216,26 @@ function displayFeaturedZones(featuredZones) {
         imageObserver.observe(img);
     });
 }
-
 function displayZones(zones) {
     container.innerHTML = "";
     zones.forEach((file, index) => {
-        if (!usedids.includes(file.id)) {
-            usedids.push(file.id);
-            const zoneItem = document.createElement("div");
-            zoneItem.className = "zone-item";
-            zoneItem.onclick = () => openZone(file);
-            const img = document.createElement("img");
-            img.dataset.src = file.cover.replace("{COVER_URL}", coverURL).replace("{HTML_URL}", htmlURL);
-            img.alt = file.name;
-            img.loading = "lazy";
-            img.className = "lazy-zone-img";
-            zoneItem.appendChild(img);
-            const button = document.createElement("button");
-            button.textContent = file.name;
-            button.onclick = (event) => {
-                event.stopPropagation();
-                openZone(file);
-            };
-            zoneItem.appendChild(button);
-            container.appendChild(zoneItem);   
-        }
+        const zoneItem = document.createElement("div");
+        zoneItem.className = "zone-item";
+        zoneItem.onclick = () => openZone(file);
+        const img = document.createElement("img");
+        img.dataset.src = file.cover.replace("{COVER_URL}", coverURL).replace("{HTML_URL}", htmlURL);
+        img.alt = file.name;
+        img.loading = "lazy";
+        img.className = "lazy-zone-img";
+        zoneItem.appendChild(img);
+        const button = document.createElement("button");
+        button.textContent = file.name;
+        button.onclick = (event) => {
+            event.stopPropagation();
+            openZone(file);
+        };
+        zoneItem.appendChild(button);
+        container.appendChild(zoneItem);   
     });
     if (container.innerHTML === "") {
         container.innerHTML = "No zones found.";
@@ -736,4 +732,10 @@ XMLHttpRequest.prototype.open = function (method, url) {
 
 HTMLCanvasElement.prototype.toDataURL = function (...args) {
     return "";
-};
+};</script>
+    <script>
+        const search = new URLSearchParams(window.location.search);
+        const privacy = search.get('privacy');
+        if (privacy) {
+            loadPrivacy();
+        }
