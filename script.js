@@ -626,14 +626,6 @@ function tabCloak() {
     document.getElementById('popupOverlay').style.display = "flex";
 }
 
-function toggleAds() {
-    const current = localStorage.getItem("disableads") === "true";
-    const newValue = !current;
-    localStorage.setItem("disableads", newValue.toString());
-    alert(`Ads ${newValue ? "Disabled" : "Enabled"}, Reload to see changes`);
-    document.getElementById("adthing").textContent = newValue ? "Enable Ads" : "Disable Ads";
-}
-
 const settings = document.getElementById('settings');
 settings.addEventListener('click', () => {
     document.getElementById('popupTitle').textContent = "Settings";
@@ -642,11 +634,8 @@ settings.addEventListener('click', () => {
     <button class="settings-button" onclick="darkMode()">Toggle Dark Mode</button>
     <br><br>
     <button class="settings-button" onclick="tabCloak()">Tab Cloak</button>
-    <br><br>
-    <button class="settings-button" id='adthing' onclick="toggleAds()">Disable/Enable Ads</button>
     <br>
     `;
-    document.getElementById("adthing").textContent = localStorage.getItem("disableads") ? "Enable Ads" : "Disable Ads"
     popupBody.contentEditable = false;
     document.getElementById('popupOverlay').style.display = "flex";
 });

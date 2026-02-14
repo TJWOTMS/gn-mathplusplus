@@ -2,20 +2,6 @@
 <html lang="en">
     <head>
         <base href="https://cdn.jsdelivr.net/gh/gn-math/gn-math-DONTDMCA@main/">
-<script>
-    if (localStorage.getItem("disableads") == null || localStorage.getItem('disableads') == 'false') {
-        (function(s) {
-            s.dataset.zone = '10604315', s.src = 'https://nap5k.com/tag.min.js'
-        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-    }
-</script>
-<script>
-    if (localStorage.getItem("disableads") == null || localStorage.getItem('disableads') == 'false') {
-        (function(s) {
-            s.dataset.zone = '10604321', s.src = 'https://gizokraijaw.net/vignette.min.js'
-        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-    }
-</script>
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -759,7 +745,66 @@ footer {
         </div>
     </header>
 	<main>
-    <div style="height:90px; position:sticky;">
+<script>
+(function () {
+  const block = () => {
+    console.warn("Blocked redirect attempt");
+  };
+
+  try {
+    Object.defineProperty(window, "location", {
+      configurable: false,
+      enumerable: true,
+      get() {
+        return {
+          assign: block,
+          replace: block,
+          reload: block,
+          href: window.location.href
+        };
+      },
+      set: block
+    });
+  } catch (e) {}
+
+  window.open = function () {
+    console.warn("Blocked window.open");
+    return null;
+  };
+  try {
+    Object.defineProperty(window, "top", {
+      get() {
+        return window;
+      }
+    });
+  } catch (e) {}
+  window.addEventListener("beforeunload", (e) => {
+    e.stopImmediatePropagation();
+  }, true);
+
+})();
+</script>
+
+<script>
+  atOptions = {
+    'key' : 'f75eaf1bebd085497664ab9058a6017c',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/f75eaf1bebd085497664ab9058a6017c/invoke.js"></script>
+<script>
+  atOptions = {
+    'key' : 'f75eaf1bebd085497664ab9058a6017c',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/f75eaf1bebd085497664ab9058a6017c/invoke.js"></script>
 </div>
     <br>
         <details id="featuredZonesWrapper" open>
@@ -1448,14 +1493,6 @@ function tabCloak() {
     document.getElementById('popupOverlay').style.display = "flex";
 }
 
-function toggleAds() {
-    const current = localStorage.getItem("disableads") === "true";
-    const newValue = !current;
-    localStorage.setItem("disableads", newValue.toString());
-    alert(`Ads ${newValue ? "Disabled" : "Enabled"}, Reload to see changes`);
-    document.getElementById("adthing").textContent = newValue ? "Enable Ads" : "Disable Ads";
-}
-
 const settings = document.getElementById('settings');
 settings.addEventListener('click', () => {
     document.getElementById('popupTitle').textContent = "Settings";
@@ -1464,11 +1501,8 @@ settings.addEventListener('click', () => {
     <button class="settings-button" onclick="darkMode()">Toggle Dark Mode</button>
     <br><br>
     <button class="settings-button" onclick="tabCloak()">Tab Cloak</button>
-    <br><br>
-    <button class="settings-button" id='adthing' onclick="toggleAds()">Disable/Enable Ads</button>
     <br>
     `;
-    document.getElementById("adthing").textContent = localStorage.getItem("disableads") ? "Enable Ads" : "Disable Ads"
     popupBody.contentEditable = false;
     document.getElementById('popupOverlay').style.display = "flex";
 });
